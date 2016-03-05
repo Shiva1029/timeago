@@ -13,41 +13,53 @@
                         if (months >= 12) {
                             var years = Math.floor(months / 12);
                             obj.num = years;
-                            obj.unit = "Years";
-                            obj.subunit = "Months";
+                            if (obj.num > 1)
+                              obj.unit = "Years";
+                            else obj.unit = "Year";
+                            obj.subunit = "Month";
                             obj.tomin = 6;
                             return obj;
                         } else {
                             obj.num = months;
-                            obj.unit = "Months";
-                            obj.subunit = "Weeks";
+                            if (obj.num > 1)
+                              obj.unit = "Months";
+                            else obj.unit = "Month";
+                            obj.subunit = "Week";
                             obj.tomin = 5;
                             return obj;
                         }
                     } else {
                         obj.num = weeks;
-                        obj.unit = "Weeks";
-                        obj.subunit = "Days";
+                        if (obj.num > 1)
+                          obj.unit = "Weeks";
+                        else obj.unit = "Week";
+                        obj.subunit = "Day";
                         obj.tomin = 4;
                         return obj;
                     }
                 } else {
                     obj.num = days;
-                    obj.unit = "Days";
-                    obj.subunit = "Hours";
+                    if (obj.num > 1)
+                      obj.unit = "Days";
+                    else obj.unit ="Day";
+                    obj.subunit = "Hour";
                     obj.tomin = 3;
                     return obj;
                 }
             } else {
                 obj.num = hours;
-                obj.unit = "Hours";
-                obj.subunit = "Minutes";
+                if (obj.num > 1)
+                  obj.unit = "Hours";
+                else obj.unit = "Hour";
+                obj.subunit = "Minute";
                 obj.tomin = 2;
                 return obj;
             }
         } else {
             obj.num = mins;
-            obj.unit = "Minutes";
+            if (obj.num > 1)
+              obj.unit = "Minutes";
+            else obj.unit="Minute";
             obj.tomin = 1;
             return obj;
         }
@@ -72,6 +84,8 @@
                 sub = "";
             } else {
                 sub = " " + sub + " " + obj1.subunit;
+                if (sub > 1)
+                    sub = sub + "s";
             }
             return obj1.num + " " + obj1.unit + sub + tense;
         } else {
